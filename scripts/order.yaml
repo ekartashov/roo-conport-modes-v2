@@ -1,0 +1,117 @@
+# Enhanced Roo Modes Ordering Configuration
+# This file demonstrates all available ordering strategies and options
+# for the sync_modes_to_global_config_enhanced.py script
+
+# =============================================================================
+# STRATEGIC ORDERING CONFIGURATION (Default - Backward Compatible)
+# =============================================================================
+# Uses the original hardcoded strategic order with discovered modes appended
+strategy: strategic
+
+# Priority modes that should appear first regardless of strategy
+priority_modes:
+  - debug        # Prioritize debugging when issues arise
+  - code         # Core development workflow
+
+# Modes to exclude from the sync (useful for deprecated or experimental modes)
+exclude_modes: []
+
+# =============================================================================
+# ALTERNATIVE CONFIGURATIONS (uncomment to use)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ALPHABETICAL ORDERING: Simple alphabetical within categories
+# -----------------------------------------------------------------------------
+# strategy: alphabetical
+# priority_modes:
+#   - code
+#   - debug
+# exclude_modes:
+#   - experimental-mode
+
+# -----------------------------------------------------------------------------
+# CATEGORY-BASED ORDERING: Custom category precedence
+# -----------------------------------------------------------------------------
+# strategy: category
+# 
+# # Custom order of categories (default: core, enhanced, specialized, discovered)
+# category_order:
+#   - core              # Essential workflow modes first
+#   - specialized       # Specialized tools second
+#   - enhanced         # Enhanced variants third
+#   - discovered       # Any other discovered modes last
+# 
+# # How to sort within each category
+# within_category_sort: alphabetical  # or 'manual'
+# 
+# # Manual ordering within specific categories (when within_category_sort: manual)
+# manual_category_order:
+#   core:
+#     - code           # Development first
+#     - architect      # Planning second
+#     - debug          # Debugging third
+#     - ask            # Questions fourth
+#     - orchestrator   # Coordination last
+#   specialized:
+#     - prompt-enhancer           # Prompt enhancement first
+#     - conport-maintenance       # Maintenance second
+#     - prompt-enhancer-isolated  # Isolated tools last
+
+# -----------------------------------------------------------------------------
+# CUSTOM EXPLICIT ORDERING: Complete user control
+# -----------------------------------------------------------------------------
+# strategy: custom
+# 
+# # Explicit order of all modes (remaining modes appended alphabetically)
+# custom_order:
+#   - code
+#   - debug
+#   - architect
+#   - prompt-enhancer
+#   - conport-maintenance
+#   - ask
+#   - orchestrator
+#   - prompt-enhancer-isolated
+
+# =============================================================================
+# USAGE EXAMPLES
+# =============================================================================
+# 
+# To use this configuration file:
+# 
+# 1. Strategic ordering (current setting):
+#    python tooling/scripts/sync_modes_to_global_config_enhanced.py --config tooling/scripts/mode_ordering_config.yaml
+#
+# 2. Preview changes without writing:
+#    python tooling/scripts/sync_modes_to_global_config_enhanced.py --config tooling/scripts/mode_ordering_config.yaml --dry-run
+#
+# 3. Override config with CLI arguments:
+#    python tooling/scripts/sync_modes_to_global_config_enhanced.py --config tooling/scripts/mode_ordering_config.yaml --order alphabetical
+#
+# 4. CLI-only usage (no config file):
+#    python tooling/scripts/sync_modes_to_global_config_enhanced.py --order category --category-order specialized,core
+#    python tooling/scripts/sync_modes_to_global_config_enhanced.py --order custom --custom-order debug,code,architect
+#    python tooling/scripts/sync_modes_to_global_config_enhanced.py --priority debug,code --exclude experimental
+# 
+# =============================================================================
+# CURRENT DISCOVERED MODES (as of last check)
+# =============================================================================
+# 
+# Core Workflow (5 modes):
+#   - architect              # 🏗️ System design and planning
+#   - ask                    # ❓ Conceptual questions and guidance  
+#   - code                   # 💻 Writing and reviewing code
+#   - debug                  # 🪲 Troubleshooting and bug fixing
+#   - orchestrator           # 🪃 Workflow coordination
+# 
+# Specialized Tools (3 modes):
+#   - conport-maintenance         # 🗃️ ConPort database maintenance
+#   - prompt-enhancer            # 🪄 Prompt improvement and clarity
+#   - prompt-enhancer-isolated   # 🪄 Isolated prompt enhancement
+# 
+# Enhanced Variants (0 modes currently):
+#   - (none discovered)
+# 
+# Discovered/Other (0 modes currently):
+#   - (none discovered)

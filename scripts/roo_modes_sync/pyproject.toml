@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "roo-modes-sync"
+version = "1.0.0"
+description = "Synchronization system for Roo modes"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Roo Team", email = "info@roo.ai"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pyyaml>=6.0",
+    "pathlib>=1.0.1"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=23.0.0",
+    "isort>=5.10.0",
+    "mypy>=0.900",
+    "flake8>=4.0.0"
+]
+
+[project.scripts]
+roo-modes = "roo_modes_sync.cli:main"
+
+[tool.setuptools]
+# Corrected to make it a standalone package
+package-dir = {"" = "."}
+packages = ["roo_modes_sync", 
+           "roo_modes_sync.core", 
+           "roo_modes_sync.config", 
+           "roo_modes_sync.tests"]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.pytest.ini_options]
+# Updated to reference the package's test directory directly
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
